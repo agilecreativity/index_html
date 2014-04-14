@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["agilecreativity@gmail.com"]
   spec.description   = %q{Generate the index.html from list of files}
   spec.summary       = %q{Generate simple index.html from list of files}
-  spec.homepage      = "https://github.com/agilecreativity/file_indexer"
+  spec.homepage      = "https://github.com/agilecreativity/index_html"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
