@@ -1,4 +1,5 @@
 require 'uri'
+require 'code_lister'
 require_relative "./index_html/version"
 require_relative "./index_html/cli"
 require_relative "./index_html/main"

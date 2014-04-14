@@ -1,8 +1,10 @@
-# IndexHtml
+## IndexHtml
 
-Quickly generate the index.html files based on your select criteria.
+[![Gem Version](https://badge.fury.io/rb/index_html.svg)](http://badge.fury.io/rb/index_html)
 
-## Installation
+Quickly generate the index.html files based on your simple criteria.
+
+### Installation
 
 Add this line to your application's Gemfile:
 
@@ -16,7 +18,7 @@ Or install it yourself as:
 
     $ gem install index_html
 
-## Usage
+### Usage
 
 Say you have lots of ebook files (pdf, epub, or mobi) and you have properly named them
 with something like [ebook_renamer](https://rubygems.org/gems/ebook_renamer).
@@ -29,9 +31,12 @@ gem install index_html
 cd ~/Dropbox/ebooks/
 index_html generate --base-dir . \
                     --exts epub pdf mobi  \
-                    --inc-words android
+                    --inc-words android \
+                    --recursive
 ```
-## Help/Usage:
+
+### Help/Usage:
+
 Just type `index_html` without any options to see the list of help
 
 ```
@@ -60,7 +65,7 @@ Generate the index.html base on simple criteria
 
 This will generate the file `index.html` that you can open from your favourite browser.
 
-## Sample output
+### Sample output
 
 - Sample list of files from a given directory
 
@@ -114,7 +119,17 @@ The output file `index.html` should be something like
 </html>
 ```
 
-## Contributing
+### Changelogs
+
+#### 0.0.3
+
+- Remove the code duplication by using the shared_option from code_lister gem
+
+#### 0.0.2
+
+- Initial release
+
+### Contributing
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)

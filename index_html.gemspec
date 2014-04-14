@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["agilecreativity@gmail.com"]
   spec.description   = %q{Generate the index.html from list of files}
   spec.summary       = %q{Generate simple index.html from list of files}
-  spec.homepage      = "https://github.com/agilecreativity/file_indexer"
+  spec.homepage      = "https://github.com/agilecreativity/index_html"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency "code_lister", "~> 0.0.4"
+  spec.add_runtime_dependency "code_lister", "~> 0.0.5"
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec", "~> 2.14"
