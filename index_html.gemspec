@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'index_html/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "file_indexer"
+  spec.name          = "index_html"
   spec.version       = IndexHtml::VERSION
   spec.authors       = ["Burin Choomnuan"]
   spec.email         = ["agilecreativity@gmail.com"]

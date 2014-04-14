@@ -1,5 +1,9 @@
 require 'uri'
 require_relative "./index_html/version"
+require_relative "./index_html/cli"
+require_relative "./index_html/main"
+require_relative "./active_support/core_ext/hash/hash"
+require_relative "./active_support/core_ext/kernel/reporting"
 
 module IndexHtml
 
@@ -12,7 +16,7 @@ module IndexHtml
 
       header = <<-END.gsub(/^\s+\|/, '')
         |<html>
-        |<title>Agile File Listing</title>
+        |<title>File Listing</title>
         |<header>File List</header>
         |  <body>
         |    <ol>
