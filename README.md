@@ -21,10 +21,10 @@ Or install it yourself as:
 Say you have lots of ebook files (pdf, epub, or mobi) and you have properly named them
 with something like [ebook_renamer](https://rubygems.org/gems/ebook_renamer).
 
-Now that you havee the good inputs, if you like to create a quick index to all of the files
-that have the word 'Android' in in the title you could perhap try something like the following:
+Now that you have the good inputs, if you like to create a quick index to all of the files
+that have the specific word 'Android' in the title you could perhap try something like the following:
 
-```shell
+```sh
 gem install index_html
 cd ~/Dropbox/ebooks/
 index_html generate --base-dir . \
@@ -35,8 +35,6 @@ index_html generate --base-dir . \
 Just type `index_html` without any options to see the list of help
 
 ```
-You are using index_html version 0.0.1
-
 Usage:
   index_html generate [OPTIONS]
 
@@ -62,12 +60,59 @@ Generate the index.html base on simple criteria
 
 This will generate the file `index.html` that you can open from your favourite browser.
 
-## My use-case
+## Sample output
 
-- Use to generate index for files from a particular publisher.
-e.g. 'Oreilly', or 'Apress', or 'SitePoint', etc
+- Sample list of files from a given directory
 
-- Use to generate index for a particular keyword like 'Android' or 'JQuery' etc
+```shell
+$html_index generate --base-dir=spec/fixtures --exts=rb java --recursive
+```
+The output file `index.html` should be generated with something like
+
+```html
+<html>
+<title>File Listing</title>
+<header>File List</header>
+  <body>
+    <ol>
+      <li><a href="spec/fixtures/demo1.xxx.java" target="_blank">spec/fixtures/demo1.xxx.java</li>
+      <li><a href="spec/fixtures/demo1.xxx.rb" target="_blank">spec/fixtures/demo1.xxx.rb</li>
+      <li><a href="spec/fixtures/demo2.xxx.java" target="_blank">spec/fixtures/demo2.xxx.java</li>
+      <li><a href="spec/fixtures/demo2.xxx.rb" target="_blank">spec/fixtures/demo2.xxx.rb</li>
+      <li><a href="spec/fixtures/sub-dir/demo3.yyy.java" target="_blank">spec/fixtures/sub-dir/demo3.yyy.java</li>
+      <li><a href="spec/fixtures/sub-dir/demo3.yyy.rb" target="_blank">spec/fixtures/sub-dir/demo3.yyy.rb</li>
+      <li><a href="spec/fixtures/sub-dir/demo4.yyy.java" target="_blank">spec/fixtures/sub-dir/demo4.yyy.java</li>
+      <li><a href="spec/fixtures/sub-dir/demo4.yyy.rb" target="_blank">spec/fixtures/sub-dir/demo4.yyy.rb</li>
+    </ol>
+  </body>
+</html>
+```
+- Run with simple prefix option
+
+```shell
+html_index generate --base-dir=spec/fixtures --exts=rb java --recursive --prefix=http://localhost/
+```
+
+The output file `index.html` should be something like
+
+```html
+<html>
+<title>File Listing</title>
+<header>File List</header>
+  <body>
+    <ol>
+      <li><a href="http://localhost/spec/fixtures/demo1.xxx.java" target="_blank">spec/fixtures/demo1.xxx.java</li>
+      <li><a href="http://localhost/spec/fixtures/demo1.xxx.rb" target="_blank">spec/fixtures/demo1.xxx.rb</li>
+      <li><a href="http://localhost/spec/fixtures/demo2.xxx.java" target="_blank">spec/fixtures/demo2.xxx.java</li>
+      <li><a href="http://localhost/spec/fixtures/demo2.xxx.rb" target="_blank">spec/fixtures/demo2.xxx.rb</li>
+      <li><a href="http://localhost/spec/fixtures/sub-dir/demo3.yyy.java" target="_blank">spec/fixtures/sub-dir/demo3.yyy.java</li>
+      <li><a href="http://localhost/spec/fixtures/sub-dir/demo3.yyy.rb" target="_blank">spec/fixtures/sub-dir/demo3.yyy.rb</li>
+      <li><a href="http://localhost/spec/fixtures/sub-dir/demo4.yyy.java" target="_blank">spec/fixtures/sub-dir/demo4.yyy.java</li>
+      <li><a href="http://localhost/spec/fixtures/sub-dir/demo4.yyy.rb" target="_blank">spec/fixtures/sub-dir/demo4.yyy.rb</li>
+    </ol>
+  </body>
+</html>
+```
 
 ## Contributing
 

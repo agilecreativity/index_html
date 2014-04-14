@@ -2,19 +2,4 @@
 require 'code_lister'
 require_relative '../lib/index_html'
 include IndexHtml
-
-puts "You are using index_html version #{IndexHtml::VERSION}"
-puts "Your argument: #{ARGV}"
-
-# files = CodeLister.files base_dir: "spec/fixtures/",
-#                  exts: %w(rb java),
-#                  recursive: true,
-#                  ignore_case: true
-#
-# puts "FYI: your input files:"
-# puts files
-# IndexHtml.htmlify files, prefix: "",
-#                          indent: 6,
-#                          output: "00index.html"
-
 IndexHtml::CLI.start(ARGV)
