@@ -14,7 +14,7 @@ module IndexHtml
                   default: "" # empty string
 
     method_option :indent,
-                  aliases: "d",
+                  aliases: "-d",
                   desc: "Indentation to each list item in the output",
                   type: :numeric,
                   default: 6
@@ -37,28 +37,30 @@ module IndexHtml
     def usage
       puts <<-EOS
 Usage:
-  cli.rb generate
+  index_html generate [OPTIONS]
 
 Options:
   -b, [--base-dir=BASE_DIR]                # Base directory
-                                           # Default: . (current directory)
+                                           # Default: /home/bchoomnuan/Dropbox/spikes/index_html
   -e, [--exts=one two three]               # List of extensions to search for
+  -f, [--non-exts=one two three]           # List of files without extension to search for
   -n, [--inc-words=one two three]          # List of words to be included in the result if any
   -x, [--exc-words=one two three]          # List of words to be excluded from the result if any
   -i, [--ignore-case], [--no-ignore-case]  # Match case insensitively
                                            # Default: true
   -r, [--recursive], [--no-recursive]      # Search for files recursively
                                            # Default: true
+  -v, [--version], [--no-version]          # Display version information
   -p, [--prefix=PREFIX]                    # Prefix string to the URL
-  d, [--indent=N]                          # Indentation to each list item in the output
+  -d, [--indent=N]                         # Indentation to each list item in the output
                                            # Default: 6
   -o, [--output=OUTPUT]                    # Output file name
                                            # Default: index.html
-  -v, [--version], [--no-version]          # Display version information
 
 Generate the index.html base on simple criteria
       EOS
     end
+
     default_task :usage
   end
 end

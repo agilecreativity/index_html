@@ -121,6 +121,10 @@ The output file `index.html` should be something like
 
 ### Changelogs
 
+#### 0.0.4
+
+- Update code_lister to 0.0.6 for new option and fix the mistake in '-d' option
+
 #### 0.0.3
 
 - Remove the code duplication by using the shared_option from code_lister gem
