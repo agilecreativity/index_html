@@ -1,3 +1,4 @@
+require 'fileutils'
 require_relative '../spec_helper'
 
 describe IndexHtml do
@@ -28,7 +29,6 @@ describe IndexHtml do
     end
   end
 
-  #TODO: add proper test here
   context '#htmlify' do
     let :files do
       CodeLister.files base_dir: 'spec/fixtures',
@@ -37,9 +37,11 @@ describe IndexHtml do
     end
 
     it 'generates simple index file' do
+      FileUtils.rm_rf('index.html')
       IndexHtml.htmlify files,
                         indent: 6,
-                        output: 'index.html'
+                        output: 'index.html',
+                        base_dir: 'spec/fixtures'
       expect(capture(:stdout) { system('cat index.html') }).to eq \
         <<-EOT
 <html>
@@ -47,14 +49,14 @@ describe IndexHtml do
 <header>File List</header>
   <body>
     <ol>
-      <li><a href="spec/fixtures/demo1.xxx.java" target="_blank">spec/fixtures/demo1.xxx.java</li>
-      <li><a href="spec/fixtures/demo1.xxx.rb" target="_blank">spec/fixtures/demo1.xxx.rb</li>
-      <li><a href="spec/fixtures/demo2.xxx.java" target="_blank">spec/fixtures/demo2.xxx.java</li>
-      <li><a href="spec/fixtures/demo2.xxx.rb" target="_blank">spec/fixtures/demo2.xxx.rb</li>
-      <li><a href="spec/fixtures/sub-dir/demo3.yyy.java" target="_blank">spec/fixtures/sub-dir/demo3.yyy.java</li>
-      <li><a href="spec/fixtures/sub-dir/demo3.yyy.rb" target="_blank">spec/fixtures/sub-dir/demo3.yyy.rb</li>
-      <li><a href="spec/fixtures/sub-dir/demo4.yyy.java" target="_blank">spec/fixtures/sub-dir/demo4.yyy.java</li>
-      <li><a href="spec/fixtures/sub-dir/demo4.yyy.rb" target="_blank">spec/fixtures/sub-dir/demo4.yyy.rb</li>
+      <li><a href="demo1.xxx.java" target="_blank">demo1.xxx.java</li>
+      <li><a href="demo1.xxx.rb" target="_blank">demo1.xxx.rb</li>
+      <li><a href="demo2.xxx.java" target="_blank">demo2.xxx.java</li>
+      <li><a href="demo2.xxx.rb" target="_blank">demo2.xxx.rb</li>
+      <li><a href="sub-dir/demo3.yyy.java" target="_blank">sub-dir/demo3.yyy.java</li>
+      <li><a href="sub-dir/demo3.yyy.rb" target="_blank">sub-dir/demo3.yyy.rb</li>
+      <li><a href="sub-dir/demo4.yyy.java" target="_blank">sub-dir/demo4.yyy.java</li>
+      <li><a href="sub-dir/demo4.yyy.rb" target="_blank">sub-dir/demo4.yyy.rb</li>
     </ol>
   </body>
 </html>
@@ -62,10 +64,12 @@ describe IndexHtml do
     end
 
     it 'generates simple index file with prefix' do
+      FileUtils.rm_rf('index.html')
       IndexHtml.htmlify files,
                         indent: 6,
                         output: 'index.html',
-                        prefix: 'http://agilecreativity.com/'
+                        prefix: 'http://agilecreativity.com/public/',
+                        base_dir: 'spec/fixtures' # Note: must not puts the '/' at the end!
       expect(capture(:stdout) { system('cat index.html') }).to eq \
         <<-EOT
 <html>
@@ -73,18 +77,38 @@ describe IndexHtml do
 <header>File List</header>
   <body>
     <ol>
-      <li><a href="http://agilecreativity.com/spec/fixtures/demo1.xxx.java" target="_blank">spec/fixtures/demo1.xxx.java</li>
-      <li><a href="http://agilecreativity.com/spec/fixtures/demo1.xxx.rb" target="_blank">spec/fixtures/demo1.xxx.rb</li>
-      <li><a href="http://agilecreativity.com/spec/fixtures/demo2.xxx.java" target="_blank">spec/fixtures/demo2.xxx.java</li>
-      <li><a href="http://agilecreativity.com/spec/fixtures/demo2.xxx.rb" target="_blank">spec/fixtures/demo2.xxx.rb</li>
-      <li><a href="http://agilecreativity.com/spec/fixtures/sub-dir/demo3.yyy.java" target="_blank">spec/fixtures/sub-dir/demo3.yyy.java</li>
-      <li><a href="http://agilecreativity.com/spec/fixtures/sub-dir/demo3.yyy.rb" target="_blank">spec/fixtures/sub-dir/demo3.yyy.rb</li>
-      <li><a href="http://agilecreativity.com/spec/fixtures/sub-dir/demo4.yyy.java" target="_blank">spec/fixtures/sub-dir/demo4.yyy.java</li>
-      <li><a href="http://agilecreativity.com/spec/fixtures/sub-dir/demo4.yyy.rb" target="_blank">spec/fixtures/sub-dir/demo4.yyy.rb</li>
+      <li><a href="http://agilecreativity.com/public/demo1.xxx.java" target="_blank">http://agilecreativity.com/public/demo1.xxx.java</li>
+      <li><a href="http://agilecreativity.com/public/demo1.xxx.rb" target="_blank">http://agilecreativity.com/public/demo1.xxx.rb</li>
+      <li><a href="http://agilecreativity.com/public/demo2.xxx.java" target="_blank">http://agilecreativity.com/public/demo2.xxx.java</li>
+      <li><a href="http://agilecreativity.com/public/demo2.xxx.rb" target="_blank">http://agilecreativity.com/public/demo2.xxx.rb</li>
+      <li><a href="http://agilecreativity.com/public/sub-dir/demo3.yyy.java" target="_blank">http://agilecreativity.com/public/sub-dir/demo3.yyy.java</li>
+      <li><a href="http://agilecreativity.com/public/sub-dir/demo3.yyy.rb" target="_blank">http://agilecreativity.com/public/sub-dir/demo3.yyy.rb</li>
+      <li><a href="http://agilecreativity.com/public/sub-dir/demo4.yyy.java" target="_blank">http://agilecreativity.com/public/sub-dir/demo4.yyy.java</li>
+      <li><a href="http://agilecreativity.com/public/sub-dir/demo4.yyy.rb" target="_blank">http://agilecreativity.com/public/sub-dir/demo4.yyy.rb</li>
     </ol>
   </body>
 </html>
         EOT
+    end
+  end
+
+  context '#make_links' do
+    it 'works with prefix' do
+      result = IndexHtml.make_links files, base_dir: "spec/fixtures",
+                                           prefix: 'public/'
+      expect(capture(:stdout) { puts result }).to eq \
+        <<-EOT
+<li><a href="public/demo1.xxx.rb" target="_blank">public/demo1.xxx.rb</li>
+<li><a href="public/demo2.xxx.rb" target="_blank">public/demo2.xxx.rb</li>
+      EOT
+    end
+    it 'works without prefix' do
+      result = IndexHtml.make_links(files, base_dir: "spec/fixtures")
+      expect(capture(:stdout) { puts result }).to eq \
+        <<-EOT
+<li><a href="demo1.xxx.rb" target="_blank">demo1.xxx.rb</li>
+<li><a href="demo2.xxx.rb" target="_blank">demo2.xxx.rb</li>
+      EOT
     end
   end
 end

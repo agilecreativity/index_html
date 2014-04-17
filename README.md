@@ -80,14 +80,14 @@ The output file `index.html` should be generated with something like
 <header>File List</header>
   <body>
     <ol>
-      <li><a href="spec/fixtures/demo1.xxx.java" target="_blank">spec/fixtures/demo1.xxx.java</li>
-      <li><a href="spec/fixtures/demo1.xxx.rb" target="_blank">spec/fixtures/demo1.xxx.rb</li>
-      <li><a href="spec/fixtures/demo2.xxx.java" target="_blank">spec/fixtures/demo2.xxx.java</li>
-      <li><a href="spec/fixtures/demo2.xxx.rb" target="_blank">spec/fixtures/demo2.xxx.rb</li>
-      <li><a href="spec/fixtures/sub-dir/demo3.yyy.java" target="_blank">spec/fixtures/sub-dir/demo3.yyy.java</li>
-      <li><a href="spec/fixtures/sub-dir/demo3.yyy.rb" target="_blank">spec/fixtures/sub-dir/demo3.yyy.rb</li>
-      <li><a href="spec/fixtures/sub-dir/demo4.yyy.java" target="_blank">spec/fixtures/sub-dir/demo4.yyy.java</li>
-      <li><a href="spec/fixtures/sub-dir/demo4.yyy.rb" target="_blank">spec/fixtures/sub-dir/demo4.yyy.rb</li>
+      <li><a href="demo1.xxx.java" target="_blank">demo1.xxx.java</li>
+      <li><a href="demo1.xxx.rb" target="_blank">demo1.xxx.rb</li>
+      <li><a href="demo2.xxx.java" target="_blank">demo2.xxx.java</li>
+      <li><a href="demo2.xxx.rb" target="_blank">demo2.xxx.rb</li>
+      <li><a href="sub-dir/demo3.yyy.java" target="_blank">sub-dir/demo3.yyy.java</li>
+      <li><a href="sub-dir/demo3.yyy.rb" target="_blank">sub-dir/demo3.yyy.rb</li>
+      <li><a href="sub-dir/demo4.yyy.java" target="_blank">sub-dir/demo4.yyy.java</li>
+      <li><a href="sub-dir/demo4.yyy.rb" target="_blank">sub-dir/demo4.yyy.rb</li>
     </ol>
   </body>
 </html>
@@ -106,20 +106,24 @@ The output file `index.html` should be something like
 <header>File List</header>
   <body>
     <ol>
-      <li><a href="http://localhost/spec/fixtures/demo1.xxx.java" target="_blank">spec/fixtures/demo1.xxx.java</li>
-      <li><a href="http://localhost/spec/fixtures/demo1.xxx.rb" target="_blank">spec/fixtures/demo1.xxx.rb</li>
-      <li><a href="http://localhost/spec/fixtures/demo2.xxx.java" target="_blank">spec/fixtures/demo2.xxx.java</li>
-      <li><a href="http://localhost/spec/fixtures/demo2.xxx.rb" target="_blank">spec/fixtures/demo2.xxx.rb</li>
-      <li><a href="http://localhost/spec/fixtures/sub-dir/demo3.yyy.java" target="_blank">spec/fixtures/sub-dir/demo3.yyy.java</li>
-      <li><a href="http://localhost/spec/fixtures/sub-dir/demo3.yyy.rb" target="_blank">spec/fixtures/sub-dir/demo3.yyy.rb</li>
-      <li><a href="http://localhost/spec/fixtures/sub-dir/demo4.yyy.java" target="_blank">spec/fixtures/sub-dir/demo4.yyy.java</li>
-      <li><a href="http://localhost/spec/fixtures/sub-dir/demo4.yyy.rb" target="_blank">spec/fixtures/sub-dir/demo4.yyy.rb</li>
+      <li><a href="http://localhost/demo1.xxx.java" target="_blank">http://localhost/demo1.xxx.java</li>
+      <li><a href="http://localhost/demo1.xxx.rb" target="_blank">http://localhost/demo1.xxx.rb</li>
+      <li><a href="http://localhost/demo2.xxx.java" target="_blank">http://localhost/demo2.xxx.java</li>
+      <li><a href="http://localhost/demo2.xxx.rb" target="_blank"http://localhost/>demo2.xxx.rb</li>
+      <li><a href="http://localhost/sub-dir/demo3.yyy.java" target="_blank">http://localhost/sub-dir/demo3.yyy.java</li>
+      <li><a href="http://localhost/sub-dir/demo3.yyy.rb" target="_blank">http://localhost/sub-dir/demo3.yyy.rb</li>
+      <li><a href="http://localhost/sub-dir/demo4.yyy.java" target="_blank">http://localhost/sub-dir/demo4.yyy.java</li>
+      <li><a href="http://localhost/sub-dir/demo4.yyy.rb" target="_blank">http://localhost/sub-dir/demo4.yyy.rb</li>
     </ol>
   </body>
 </html>
 ```
 
 ### Changelogs
+
+#### 0.0.5
+
+- Always make the url relative in `make_links` method.
 
 #### 0.0.4
 

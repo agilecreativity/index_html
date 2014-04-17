@@ -29,22 +29,23 @@ module IndexHtml
         |</html>
         END
 
-      # our options
       prefix = args.fetch(:prefix, "")
       indent = args.fetch(:indent, 6)
       output = args.fetch(:output, "index.html")
 
-      # write the output to files
       File.open(output, "w") do |f|
         f.write(header)
-        make_links(file_list, prefix: prefix).each { |i| f.write("#{' ' * indent}#{i}\n") }
+        # TODO: always use relative path to the current :base_name
+        links = make_links file_list, prefix: prefix, base_dir: args[:base_dir]
+
+        links.each { |i| f.write("#{' ' * indent}#{i}\n") }
         f.write(footer)
       end
     end
 
     # Transform the list of full path to list of base name
     #
-    # @param [Array<String>] file_list if of file path
+    # @param [Array<String>] file_list input file list
     # @param [Hash<Symbol, Object>] args list of options
     #
     # @return [Array<String>] list of basename of a given input file
@@ -62,18 +63,36 @@ module IndexHtml
 
     # Make links using <li> tags
     #
-    # @return [Array] the list of valid <li> tags
-    def make_links(file_list, args = {})
+    # @param [Array<String>] file_list the input file list
+    # @param [Hash<Symbol,Object>] args the option hash
+    #
+    # @return [Array<String>] the list of valid <li> tags
+    def make_links(file_list, args)
+
       original_links = file_list
-      escape_uris!(file_list, args)
-      file_list = basenames!(file_list, args)
+
+      ## TODO: may be never need to escape at this point?
+      # escape_uris!(file_list, args)
+      # file_list = basenames!(file_list, args)
 
       prefix = args.fetch(:prefix, "")
+      base_dir = args[:base_dir]
 
       result = []
-      original_links.zip(file_list).each do |i,j|
-        result << %Q{<li><a href="#{prefix}#{j}" target="_blank">#{i}</li>}
+
+      ## Note: since we always use relative path, we don't need this code anymore!
+      # original_links.zip(file_list).each do |i,j|
+      #   uri    = j.gsub(base_dir,"")
+      #   target = i.gsub(base_dir,"")
+      #   result << %Q{<li><a href="#{prefix}#{uri}" target="_blank">#{target}</li>}
+      # end
+
+      original_links.each do |i|
+        uri = i.gsub(base_dir,"")
+        uri.gsub!(/^\//,"") # remove the '/' if we have one
+        result << %Q{<li><a href="#{prefix}#{uri}" target="_blank">#{prefix}#{uri}</li>}
       end
+
       result
     end
 
