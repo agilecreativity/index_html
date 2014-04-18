@@ -121,6 +121,10 @@ The output file `index.html` should be something like
 
 ### Changelogs
 
+#### 0.0.6
+
+- Fix the Rakefile to include the correct library
+
 #### 0.0.5
 
 - Always make the url relative in `make_links` method.

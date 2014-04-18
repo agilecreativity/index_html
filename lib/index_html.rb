@@ -35,9 +35,7 @@ module IndexHtml
 
       File.open(output, "w") do |f|
         f.write(header)
-        # TODO: always use relative path to the current :base_name
         links = make_links file_list, prefix: prefix, base_dir: args[:base_dir]
-
         links.each { |i| f.write("#{' ' * indent}#{i}\n") }
         f.write(footer)
       end
