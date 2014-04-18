@@ -11,7 +11,7 @@ module IndexHtml
     method_option :prefix,
                   aliases: "-p",
                   desc: "Prefix string to the URL",
-                  default: "" # empty string
+                  default: "."
 
     method_option :indent,
                   aliases: "-d",

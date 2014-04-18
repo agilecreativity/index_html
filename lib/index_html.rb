@@ -29,7 +29,7 @@ module IndexHtml
         |</html>
         END
 
-      prefix = args.fetch(:prefix, "")
+      prefix = args.fetch(:prefix, ".")
       indent = args.fetch(:indent, 6)
       output = args.fetch(:output, "index.html")
 
@@ -67,28 +67,22 @@ module IndexHtml
     # @return [Array<String>] the list of valid <li> tags
     def make_links(file_list, args)
 
-      original_links = file_list
-
-      ## TODO: may be never need to escape at this point?
-      # escape_uris!(file_list, args)
-      # file_list = basenames!(file_list, args)
-
-      prefix = args.fetch(:prefix, "")
+      prefix = args.fetch(:prefix, ".")
       base_dir = args[:base_dir]
-
       result = []
 
-      ## Note: since we always use relative path, we don't need this code anymore!
-      # original_links.zip(file_list).each do |i,j|
-      #   uri    = j.gsub(base_dir,"")
-      #   target = i.gsub(base_dir,"")
-      #   result << %Q{<li><a href="#{prefix}#{uri}" target="_blank">#{target}</li>}
-      # end
+      file_list.each do |i|
 
-      original_links.each do |i|
-        uri = i.gsub(base_dir,"")
-        uri.gsub!(/^\//,"") # remove the '/' if we have one
-        result << %Q{<li><a href="#{prefix}#{uri}" target="_blank">#{prefix}#{uri}</li>}
+        path = File.absolute_path(i).gsub(Dir.pwd, "")
+
+        if prefix
+          link =  %Q{<li><a href="#{prefix}#{path}" target="_blank">#{prefix}#{path}</li>}
+        else
+          #TODO: may be we never get this condition?
+          link =  %Q{<li><a href=".#{path}" target="_blank">#{path.gsub(/^\//,"")}</li>}
+        end
+
+        result << link
       end
 
       result
