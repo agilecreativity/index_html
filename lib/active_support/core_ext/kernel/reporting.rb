@@ -23,9 +23,7 @@ module Kernel
     stream_io = eval("$#{stream}")
     origin_stream = stream_io.dup
     stream_io.reopen(captured_stream)
-
     yield
-
     stream_io.rewind
     return captured_stream.read
   ensure

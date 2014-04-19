@@ -21,9 +21,9 @@ Or install it yourself as:
 ### Usage
 
 Say you have lots of ebook files (pdf, epub, or mobi) and you have properly named them
-with something like [ebook_renamer](https://rubygems.org/gems/ebook_renamer).
+with something like [ebook_renamer][].
 
-Now that you have the good inputs, if you like to create a quick index to all of the files
+Now that you have the good data, if you like to create a quick index to all of the files
 that have the specific word 'Android' in the title you could perhap try something like the following:
 
 ```sh
@@ -46,19 +46,20 @@ Usage:
 Options:
   -b, [--base-dir=BASE_DIR]                # Base directory
                                            # Default: . (current directory)
-  -e, [--exts=one two three]               # List of extensions to search for
+  -f, [--non-exts=one two three]           # List of files without extension to search for
   -n, [--inc-words=one two three]          # List of words to be included in the result if any
   -x, [--exc-words=one two three]          # List of words to be excluded from the result if any
   -i, [--ignore-case], [--no-ignore-case]  # Match case insensitively
                                            # Default: true
   -r, [--recursive], [--no-recursive]      # Search for files recursively
                                            # Default: true
+  -v, [--version], [--no-version]          # Display version information
   -p, [--prefix=PREFIX]                    # Prefix string to the URL
-  d, [--indent=N]                          # Indentation to each list item in the output
+                                           # Default: .
+  -d, [--indent=N]                         # Indentation to each list item in the output
                                            # Default: 6
   -o, [--output=OUTPUT]                    # Output file name
                                            # Default: index.html
-  -v, [--version], [--no-version]          # Display version information
 
 Generate the index.html base on simple criteria
 ```
@@ -95,7 +96,7 @@ The output file `index.html` should be generated with something like
 - Run with simple prefix option
 
 ```shell
-index_html generate --base-dir spec/fixtures --exts rb java --recursive --prefix http://localhost/
+index_html generate --base-dir spec/fixtures --exts rb java --recursive --prefix http://localhost
 ```
 
 The output file `index.html` should be something like
@@ -106,14 +107,14 @@ The output file `index.html` should be something like
 <header>File List</header>
   <body>
     <ol>
-      <li><a href="http://localhost//spec/fixtures/demo1.xxx.java" target="_blank">http://localhost//spec/fixtures/demo1.xxx.java</li>
-      <li><a href="http://localhost//spec/fixtures/demo1.xxx.rb" target="_blank">http://localhost//spec/fixtures/demo1.xxx.rb</li>
-      <li><a href="http://localhost//spec/fixtures/demo2.xxx.java" target="_blank">http://localhost//spec/fixtures/demo2.xxx.java</li>
-      <li><a href="http://localhost//spec/fixtures/demo2.xxx.rb" target="_blank">http://localhost//spec/fixtures/demo2.xxx.rb</li>
-      <li><a href="http://localhost//spec/fixtures/sub-dir/demo3.yyy.java" target="_blank">http://localhost//spec/fixtures/sub-dir/demo3.yyy.java</li>
-      <li><a href="http://localhost//spec/fixtures/sub-dir/demo3.yyy.rb" target="_blank">http://localhost//spec/fixtures/sub-dir/demo3.yyy.rb</li>
-      <li><a href="http://localhost//spec/fixtures/sub-dir/demo4.yyy.java" target="_blank">http://localhost//spec/fixtures/sub-dir/demo4.yyy.java</li>
-      <li><a href="http://localhost//spec/fixtures/sub-dir/demo4.yyy.rb" target="_blank">http://localhost//spec/fixtures/sub-dir/demo4.yyy.rb</li>
+      <li><a href="http://localhost/spec/fixtures/demo1.xxx.java" target="_blank">http://localhost/spec/fixtures/demo1.xxx.java</li>
+      <li><a href="http://localhost/spec/fixtures/demo1.xxx.rb" target="_blank">http://localhost/spec/fixtures/demo1.xxx.rb</li>
+      <li><a href="http://localhost/spec/fixtures/demo2.xxx.java" target="_blank">http://localhost/spec/fixtures/demo2.xxx.java</li>
+      <li><a href="http://localhost/spec/fixtures/demo2.xxx.rb" target="_blank">http://localhost/spec/fixtures/demo2.xxx.rb</li>
+      <li><a href="http://localhost/spec/fixtures/sub-dir/demo3.yyy.java" target="_blank">http:/localhost/spec/fixtures/sub-dir/demo3.yyy.java</li>
+      <li><a href="http://localhost/spec/fixtures/sub-dir/demo3.yyy.rb" target="_blank">http://localhost/spec/fixtures/sub-dir/demo3.yyy.rb</li>
+      <li><a href="http://localhost/spec/fixtures/sub-dir/demo4.yyy.java" target="_blank">http://localhost/spec/fixtures/sub-dir/demo4.yyy.java</li>
+      <li><a href="http://localhost/spec/fixtures/sub-dir/demo4.yyy.rb" target="_blank">http://localhost/spec/fixtures/sub-dir/demo4.yyy.rb</li>
     </ol>
   </body>
 </html>
@@ -123,6 +124,14 @@ The output file `index.html` should be something like
 - Will be listed here if any
 
 ### Changelogs
+
+#### 0.0.8
+
+- Upgrade to [code_lister][] version 0.0.7
+
+- Use the [agile_utils][] for shared option
+
+- Fix style using [rubocop][] gem
 
 #### 0.0.7
 
@@ -138,7 +147,9 @@ The output file `index.html` should be something like
 
 #### 0.0.4
 
-- Update code_lister to 0.0.6 for new option and fix the mistake in '-d' option
+- Update [code_lister][] to 0.0.6 for new option
+
+- Fix the mistake in '-d' option
 
 #### 0.0.3
 
@@ -150,8 +161,16 @@ The output file `index.html` should be something like
 
 ### Contributing
 
+Bug reports and suggestions for improvements are always welcome,
+GitHub pull requests are even better!.
+
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+[agile_utils]: https://rubygems.org/gems/agile_utils
+[code_lister]: https://rubygems.org/gems/code_lister
+[ebook_renamer]: https://rubygems.org/gems/ebook_renamer
+[rubocop]: https://github.com/bbatsov/rubocop

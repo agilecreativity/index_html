@@ -19,6 +19,5 @@ end
 require_relative '../lib/index_html'
 require_relative '../lib/active_support/core_ext/kernel/reporting'
 require 'code_lister'
-
 include CodeLister
 include IndexHtml

@@ -2,7 +2,6 @@ require 'fileutils'
 require_relative '../spec_helper'
 
 describe IndexHtml do
-
   let(:files) {
     CodeLister.files base_dir: 'spec/fixtures',
                      exts: %w(xxx.rb), recursive: true
@@ -10,22 +9,22 @@ describe IndexHtml do
 
   context '#basenames!' do
     it 'excludes full path of the files' do
-      expect(IndexHtml.basenames!(files, basename: true)).to eq ["demo1.xxx.rb",
-                                                                 "demo2.xxx.rb"]
+      expect(IndexHtml.basenames!(files, basename: true)).to eq ['demo1.xxx.rb',
+                                                                 'demo2.xxx.rb']
     end
 
     it 'includes full path of the files' do
-      expect(IndexHtml.basenames!(files)).to eq ["spec/fixtures/demo1.xxx.rb",
-                                                 "spec/fixtures/demo2.xxx.rb"]
-      expect(IndexHtml.basenames!(files, basename: false)).to eq ["spec/fixtures/demo1.xxx.rb",
-                                                                  "spec/fixtures/demo2.xxx.rb"]
+      expect(IndexHtml.basenames!(files)).to eq ['spec/fixtures/demo1.xxx.rb',
+                                                 'spec/fixtures/demo2.xxx.rb']
+      expect(IndexHtml.basenames!(files, basename: false)).to eq ['spec/fixtures/demo1.xxx.rb',
+                                                                  'spec/fixtures/demo2.xxx.rb']
     end
   end
 
   context '#escape_uris!' do
     it 'works correctly with full path' do
-      expect(IndexHtml.escape_uris!(files, encoded: true)).to eq ["spec%2Ffixtures%2Fdemo1.xxx.rb",
-                                                                  "spec%2Ffixtures%2Fdemo2.xxx.rb"]
+      expect(IndexHtml.escape_uris!(files, encoded: true)).to eq ['spec%2Ffixtures%2Fdemo1.xxx.rb',
+                                                                  'spec%2Ffixtures%2Fdemo2.xxx.rb']
     end
   end
 
@@ -49,14 +48,14 @@ describe IndexHtml do
 <header>File List</header>
   <body>
     <ol>
-      <li><a href="./spec/fixtures/demo1.xxx.java" target="_blank">./spec/fixtures/demo1.xxx.java</li>
-      <li><a href="./spec/fixtures/demo1.xxx.rb" target="_blank">./spec/fixtures/demo1.xxx.rb</li>
-      <li><a href="./spec/fixtures/demo2.xxx.java" target="_blank">./spec/fixtures/demo2.xxx.java</li>
-      <li><a href="./spec/fixtures/demo2.xxx.rb" target="_blank">./spec/fixtures/demo2.xxx.rb</li>
-      <li><a href="./spec/fixtures/sub-dir/demo3.yyy.java" target="_blank">./spec/fixtures/sub-dir/demo3.yyy.java</li>
-      <li><a href="./spec/fixtures/sub-dir/demo3.yyy.rb" target="_blank">./spec/fixtures/sub-dir/demo3.yyy.rb</li>
-      <li><a href="./spec/fixtures/sub-dir/demo4.yyy.java" target="_blank">./spec/fixtures/sub-dir/demo4.yyy.java</li>
-      <li><a href="./spec/fixtures/sub-dir/demo4.yyy.rb" target="_blank">./spec/fixtures/sub-dir/demo4.yyy.rb</li>
+      <li><a href="./spec/fixtures/demo1.xxx.java" target='_blank'>./spec/fixtures/demo1.xxx.java</li>
+      <li><a href="./spec/fixtures/demo1.xxx.rb" target='_blank'>./spec/fixtures/demo1.xxx.rb</li>
+      <li><a href="./spec/fixtures/demo2.xxx.java" target='_blank'>./spec/fixtures/demo2.xxx.java</li>
+      <li><a href="./spec/fixtures/demo2.xxx.rb" target='_blank'>./spec/fixtures/demo2.xxx.rb</li>
+      <li><a href="./spec/fixtures/sub-dir/demo3.yyy.java" target='_blank'>./spec/fixtures/sub-dir/demo3.yyy.java</li>
+      <li><a href="./spec/fixtures/sub-dir/demo3.yyy.rb" target='_blank'>./spec/fixtures/sub-dir/demo3.yyy.rb</li>
+      <li><a href="./spec/fixtures/sub-dir/demo4.yyy.java" target='_blank'>./spec/fixtures/sub-dir/demo4.yyy.java</li>
+      <li><a href="./spec/fixtures/sub-dir/demo4.yyy.rb" target='_blank'>./spec/fixtures/sub-dir/demo4.yyy.rb</li>
     </ol>
   </body>
 </html>
@@ -77,14 +76,14 @@ describe IndexHtml do
 <header>File List</header>
   <body>
     <ol>
-      <li><a href="http://agilecreativity.com/public/spec/fixtures/demo1.xxx.java" target="_blank">http://agilecreativity.com/public/spec/fixtures/demo1.xxx.java</li>
-      <li><a href="http://agilecreativity.com/public/spec/fixtures/demo1.xxx.rb" target="_blank">http://agilecreativity.com/public/spec/fixtures/demo1.xxx.rb</li>
-      <li><a href="http://agilecreativity.com/public/spec/fixtures/demo2.xxx.java" target="_blank">http://agilecreativity.com/public/spec/fixtures/demo2.xxx.java</li>
-      <li><a href="http://agilecreativity.com/public/spec/fixtures/demo2.xxx.rb" target="_blank">http://agilecreativity.com/public/spec/fixtures/demo2.xxx.rb</li>
-      <li><a href="http://agilecreativity.com/public/spec/fixtures/sub-dir/demo3.yyy.java" target="_blank">http://agilecreativity.com/public/spec/fixtures/sub-dir/demo3.yyy.java</li>
-      <li><a href="http://agilecreativity.com/public/spec/fixtures/sub-dir/demo3.yyy.rb" target="_blank">http://agilecreativity.com/public/spec/fixtures/sub-dir/demo3.yyy.rb</li>
-      <li><a href="http://agilecreativity.com/public/spec/fixtures/sub-dir/demo4.yyy.java" target="_blank">http://agilecreativity.com/public/spec/fixtures/sub-dir/demo4.yyy.java</li>
-      <li><a href="http://agilecreativity.com/public/spec/fixtures/sub-dir/demo4.yyy.rb" target="_blank">http://agilecreativity.com/public/spec/fixtures/sub-dir/demo4.yyy.rb</li>
+      <li><a href="http://agilecreativity.com/public/spec/fixtures/demo1.xxx.java" target='_blank'>http://agilecreativity.com/public/spec/fixtures/demo1.xxx.java</li>
+      <li><a href="http://agilecreativity.com/public/spec/fixtures/demo1.xxx.rb" target='_blank'>http://agilecreativity.com/public/spec/fixtures/demo1.xxx.rb</li>
+      <li><a href="http://agilecreativity.com/public/spec/fixtures/demo2.xxx.java" target='_blank'>http://agilecreativity.com/public/spec/fixtures/demo2.xxx.java</li>
+      <li><a href="http://agilecreativity.com/public/spec/fixtures/demo2.xxx.rb" target='_blank'>http://agilecreativity.com/public/spec/fixtures/demo2.xxx.rb</li>
+      <li><a href="http://agilecreativity.com/public/spec/fixtures/sub-dir/demo3.yyy.java" target='_blank'>http://agilecreativity.com/public/spec/fixtures/sub-dir/demo3.yyy.java</li>
+      <li><a href="http://agilecreativity.com/public/spec/fixtures/sub-dir/demo3.yyy.rb" target='_blank'>http://agilecreativity.com/public/spec/fixtures/sub-dir/demo3.yyy.rb</li>
+      <li><a href="http://agilecreativity.com/public/spec/fixtures/sub-dir/demo4.yyy.java" target='_blank'>http://agilecreativity.com/public/spec/fixtures/sub-dir/demo4.yyy.java</li>
+      <li><a href="http://agilecreativity.com/public/spec/fixtures/sub-dir/demo4.yyy.rb" target='_blank'>http://agilecreativity.com/public/spec/fixtures/sub-dir/demo4.yyy.rb</li>
     </ol>
   </body>
 </html>
@@ -97,8 +96,8 @@ describe IndexHtml do
       result = IndexHtml.make_links files, base_dir: "spec/fixtures", prefix: 'public'
       expect(capture(:stdout) { puts result }).to eq \
         <<-EOT
-<li><a href="public/spec/fixtures/demo1.xxx.rb" target="_blank">public/spec/fixtures/demo1.xxx.rb</li>
-<li><a href="public/spec/fixtures/demo2.xxx.rb" target="_blank">public/spec/fixtures/demo2.xxx.rb</li>
+<li><a href="public/spec/fixtures/demo1.xxx.rb" target='_blank'>public/spec/fixtures/demo1.xxx.rb</li>
+<li><a href="public/spec/fixtures/demo2.xxx.rb" target='_blank'>public/spec/fixtures/demo2.xxx.rb</li>
       EOT
     end
 
@@ -106,8 +105,8 @@ describe IndexHtml do
       result = IndexHtml.make_links(files, base_dir: "spec/fixtures")
       expect(capture(:stdout) { puts result }).to eq \
         <<-EOT
-<li><a href="./spec/fixtures/demo1.xxx.rb" target="_blank">./spec/fixtures/demo1.xxx.rb</li>
-<li><a href="./spec/fixtures/demo2.xxx.rb" target="_blank">./spec/fixtures/demo2.xxx.rb</li>
+<li><a href="./spec/fixtures/demo1.xxx.rb" target='_blank'>./spec/fixtures/demo1.xxx.rb</li>
+<li><a href="./spec/fixtures/demo2.xxx.rb" target='_blank'>./spec/fixtures/demo2.xxx.rb</li>
       EOT
     end
 
@@ -117,8 +116,8 @@ describe IndexHtml do
       result = IndexHtml.make_links(files, base_dir: "./spec/fixtures/")
       expect(capture(:stdout) { puts result }).to eq \
         <<-EOT
-<li><a href="./spec/fixtures/demo1.xxx.rb" target="_blank">./spec/fixtures/demo1.xxx.rb</li>
-<li><a href="./spec/fixtures/demo2.xxx.rb" target="_blank">./spec/fixtures/demo2.xxx.rb</li>
+<li><a href="./spec/fixtures/demo1.xxx.rb" target='_blank'>./spec/fixtures/demo1.xxx.rb</li>
+<li><a href="./spec/fixtures/demo2.xxx.rb" target='_blank'>./spec/fixtures/demo2.xxx.rb</li>
       EOT
     end
 
@@ -128,10 +127,9 @@ describe IndexHtml do
       result = IndexHtml.make_links(files, base_dir: "spec/fixtures/")
       expect(capture(:stdout) { puts result }).to eq \
         <<-EOT
-<li><a href="./spec/fixtures/demo1.xxx.rb" target="_blank">./spec/fixtures/demo1.xxx.rb</li>
-<li><a href="./spec/fixtures/demo2.xxx.rb" target="_blank">./spec/fixtures/demo2.xxx.rb</li>
+<li><a href="./spec/fixtures/demo1.xxx.rb" target='_blank'>./spec/fixtures/demo1.xxx.rb</li>
+<li><a href="./spec/fixtures/demo2.xxx.rb" target='_blank'>./spec/fixtures/demo2.xxx.rb</li>
       EOT
     end
-
   end
 end

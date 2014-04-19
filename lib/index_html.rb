@@ -1,17 +1,13 @@
 require 'uri'
 require 'code_lister'
-require_relative "./index_html/version"
-require_relative "./index_html/cli"
-require_relative "./index_html/main"
-require_relative "./active_support/core_ext/hash/hash"
-require_relative "./active_support/core_ext/kernel/reporting"
+require_relative './index_html/version'
+require_relative './index_html/cli'
+require_relative './active_support/core_ext/hash/hash'
+require_relative './active_support/core_ext/kernel/reporting'
 
 module IndexHtml
-
   CustomError = Class.new(StandardError)
-
   class << self
-
     # Create html links to list of files
     def htmlify(file_list, args = {})
 
@@ -29,11 +25,11 @@ module IndexHtml
         |</html>
         END
 
-      prefix = args.fetch(:prefix, ".")
+      prefix = args.fetch(:prefix, '.')
       indent = args.fetch(:indent, 6)
-      output = args.fetch(:output, "index.html")
+      output = args.fetch(:output, 'index.html')
 
-      File.open(output, "w") do |f|
+      File.open(output, 'w') do |f|
         f.write(header)
         links = make_links file_list, prefix: prefix, base_dir: args[:base_dir]
         links.each { |i| f.write("#{' ' * indent}#{i}\n") }
@@ -66,27 +62,19 @@ module IndexHtml
     #
     # @return [Array<String>] the list of valid <li> tags
     def make_links(file_list, args)
-
-      prefix = args.fetch(:prefix, ".")
-      base_dir = args[:base_dir]
+      prefix = args.fetch(:prefix, '.')
       result = []
 
       file_list.each do |i|
-
-        path = File.absolute_path(i).gsub(Dir.pwd, "")
-
+        path = File.absolute_path(i).gsub(Dir.pwd, '')
         if prefix
-          link =  %Q{<li><a href="#{prefix}#{path}" target="_blank">#{prefix}#{path}</li>}
+          link =  %Q{<li><a href="#{prefix}#{path}" target='_blank'>#{prefix}#{path}</li>}
         else
-          #TODO: may be we never get this condition?
-          link =  %Q{<li><a href=".#{path}" target="_blank">#{path.gsub(/^\//,"")}</li>}
+          link =  %Q{<li><a href=".#{path}" target='_blank'>#{path.gsub(/^\//,'')}</li>}
         end
-
         result << link
       end
-
       result
     end
-
   end
 end
