@@ -127,6 +127,10 @@ The output file `index.html` should be something like
 
 ### Changelogs
 
+#### 0.1.0
+
+- Update to the latest dependency
+
 #### 0.0.9
 
 - Update gem dependencies
