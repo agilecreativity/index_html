@@ -2,9 +2,6 @@ require 'uri'
 require 'code_lister'
 require_relative './index_html/version'
 require_relative './index_html/cli'
-require_relative './active_support/core_ext/hash/hash'
-require_relative './active_support/core_ext/kernel/reporting'
-
 module IndexHtml
   CustomError = Class.new(StandardError)
   class << self

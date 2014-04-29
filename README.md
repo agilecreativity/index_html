@@ -1,6 +1,8 @@
 ## IndexHtml
 
 [![Gem Version](https://badge.fury.io/rb/index_html.svg)](http://badge.fury.io/rb/index_html)
+[![Dependency Status](https://gemnasium.com/agilecreativity/index_html.png)](https://gemnasium.com/agilecreativity/index_html)
+[![Code Climate](https://codeclimate.com/github/agilecreativity/index_html.png)](https://codeclimate.com/github/agilecreativity/index_html)
 
 Quickly generate the index.html files based on your simple criteria.
 
@@ -125,12 +127,16 @@ The output file `index.html` should be something like
 
 ### Changelogs
 
+#### 0.0.9
+
+- Update gem dependencies
+- Make use of shared library from [agile_utils][]
+- Add links to [codeclimate][] and [gemnasium][]
+
 #### 0.0.8
 
 - Upgrade to [code_lister][] version 0.0.7
-
 - Use the [agile_utils][] for shared option
-
 - Fix style using [rubocop][] gem
 
 #### 0.0.7
@@ -148,7 +154,6 @@ The output file `index.html` should be something like
 #### 0.0.4
 
 - Update [code_lister][] to 0.0.6 for new option
-
 - Fix the mistake in '-d' option
 
 #### 0.0.3
@@ -174,3 +179,5 @@ GitHub pull requests are even better!.
 [code_lister]: https://rubygems.org/gems/code_lister
 [ebook_renamer]: https://rubygems.org/gems/ebook_renamer
 [rubocop]: https://github.com/bbatsov/rubocop
+[gemnasium]: https://gemnasium.com/agilecreativity/index_html
+[code_climate]: https://codeclimate.com/github/agilecreativity/index_html

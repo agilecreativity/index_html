@@ -17,7 +17,7 @@ RSpec.configure do |config|
 end
 
 require_relative '../lib/index_html'
-require_relative '../lib/active_support/core_ext/kernel/reporting'
+require 'agile_utils'
 require 'code_lister'
 include CodeLister
 include IndexHtml
