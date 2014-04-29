@@ -184,4 +184,4 @@ GitHub pull requests are even better!.
 [ebook_renamer]: https://rubygems.org/gems/ebook_renamer
 [rubocop]: https://github.com/bbatsov/rubocop
 [gemnasium]: https://gemnasium.com/agilecreativity/index_html
-[code_climate]: https://codeclimate.com/github/agilecreativity/index_html
+[codeclimate]: https://codeclimate.com/github/agilecreativity/index_html
