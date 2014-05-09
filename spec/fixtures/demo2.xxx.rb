@@ -1,1 +1,1 @@
-#file: spec/fixtures/demo2.xxx.rb
+# file: spec/fixtures/demo2.xxx.rb

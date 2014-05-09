@@ -7,7 +7,6 @@ module IndexHtml
   class << self
     # Create html links to list of files
     def htmlify(file_list, args = {})
-
       header = <<-END.gsub(/^\s+\|/, '')
         |<html>
         |<title>File Listing</title>
@@ -41,13 +40,13 @@ module IndexHtml
     #
     # @return [Array<String>] list of basename of a given input file
     def basenames!(file_list, args = {})
-      file_list.map!{ |file| File.basename(file) } if args.fetch(:basename, false)
+      file_list.map! { |file| File.basename(file) } if args.fetch(:basename, false)
       file_list
     end
 
     def escape_uris!(file_list, args = {})
       if args.fetch(:encoded, false)
-        file_list.map!{ |file| URI.escape(file, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")) }
+        file_list.map! { |file| URI.escape(file, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")) }
       end
       file_list
     end
@@ -65,9 +64,9 @@ module IndexHtml
       file_list.each do |i|
         path = File.absolute_path(i).gsub(Dir.pwd, '')
         if prefix
-          link =  %Q{<li><a href="#{prefix}#{path}" target='_blank'>#{prefix}#{path}</li>}
+          link =  %Q(<li><a href="#{prefix}#{path}" target='_blank'>#{prefix}#{path}</li>)
         else
-          link =  %Q{<li><a href=".#{path}" target='_blank'>#{path.gsub(/^\//,'')}</li>}
+          link =  %Q(<li><a href=".#{path}" target='_blank'>#{path.gsub(/^\//, '')}</li>)
         end
         result << link
       end
