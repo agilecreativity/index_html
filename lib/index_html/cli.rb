@@ -43,11 +43,12 @@ module IndexHtml
     def usage
       puts <<-EOS
 Usage:
-  index_html generate [OPTIONS]
+  index_html generate
 
 Options:
   -b, [--base-dir=BASE_DIR]                # Base directory
                                            # Default: . (current directory)
+  -e, [--exts=one two three]               # List of extensions to search for
   -f, [--non-exts=one two three]           # List of files without extension to search for
   -n, [--inc-words=one two three]          # List of words to be included in the result if any
   -x, [--exc-words=one two three]          # List of words to be excluded from the result if any

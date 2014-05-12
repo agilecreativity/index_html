@@ -1,10 +1,16 @@
-## IndexHtml
+## index_html
 
-[![Gem Version](https://badge.fury.io/rb/index_html.svg)](http://badge.fury.io/rb/index_html)
-[![Dependency Status](https://gemnasium.com/agilecreativity/index_html.png)](https://gemnasium.com/agilecreativity/index_html)
-[![Code Climate](https://codeclimate.com/github/agilecreativity/index_html.png)](https://codeclimate.com/github/agilecreativity/index_html)
+[![Gem Version](https://badge.fury.io/rb/index_html.svg)][gem]
+[![Dependency Status](https://gemnasium.com/agilecreativity/index_html.png)][gemnasium]
+[![Code Climate](https://codeclimate.com/github/agilecreativity/index_html.png)][codeclimate]
+
+[gem]: http://badge.fury.io/rb/index_html
+[gemnasium]: https://gemnasium.com/agilecreativity/index_html
+[codeclimate]: https://codeclimate.com/github/agilecreativity/index_html
 
 Quickly generate the index.html files based on your simple criteria.
+
+Note: start from version `0.1.2` this gem will follow the [Semantic Versioning][] release schedule.
 
 ### Installation
 
@@ -43,11 +49,12 @@ Just type `index_html` without any options to see the list of help
 
 ```
 Usage:
-  index_html generate [OPTIONS]
+  index_html generate
 
 Options:
   -b, [--base-dir=BASE_DIR]                # Base directory
                                            # Default: . (current directory)
+  -e, [--exts=one two three]               # List of extensions to search for
   -f, [--non-exts=one two three]           # List of files without extension to search for
   -n, [--inc-words=one two three]          # List of words to be included in the result if any
   -x, [--exc-words=one two three]          # List of words to be excluded from the result if any
@@ -136,5 +143,4 @@ GitHub pull requests are even better!.
 [code_lister]: https://rubygems.org/gems/code_lister
 [ebook_renamer]: https://rubygems.org/gems/ebook_renamer
 [rubocop]: https://github.com/bbatsov/rubocop
-[gemnasium]: https://gemnasium.com/agilecreativity/index_html
-[codeclimate]: https://codeclimate.com/github/agilecreativity/index_html
+[Semantic Versioning]: http://semver.org
