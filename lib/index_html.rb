@@ -1,13 +1,13 @@
-require 'uri'
-require 'code_lister'
-require_relative './index_html/version'
-require_relative './index_html/cli'
+require "uri"
+require "code_lister"
+require_relative "./index_html/version"
+require_relative "./index_html/cli"
 module IndexHtml
   CustomError = Class.new(StandardError)
   class << self
     # Create html links to list of files
     def htmlify(file_list, args = {})
-      header = <<-END.gsub(/^\s+\|/, '')
+      header = <<-END.gsub(/^\s+\|/, "")
         |<html>
         |<title>File Listing</title>
         |<header>File List</header>
@@ -15,20 +15,20 @@ module IndexHtml
         |    <ol>
         END
 
-      footer = <<-END.gsub(/^\s+\|/, '')
+      footer = <<-END.gsub(/^\s+\|/, "")
         |    </ol>
         |  </body>
         |</html>
         END
 
-      prefix = args.fetch(:prefix, '.')
+      prefix = args.fetch(:prefix, ".")
       indent = args.fetch(:indent, 6)
-      output = args.fetch(:output, 'index.html')
+      output = args.fetch(:output, "index.html")
 
-      File.open(output, 'w') do |f|
+      File.open(output, "w") do |f|
         f.write(header)
         links = make_links file_list, prefix: prefix, base_dir: args[:base_dir]
-        links.each { |i| f.write("#{' ' * indent}#{i}\n") }
+        links.each { |i| f.write("#{" " * indent}#{i}\n") }
         f.write(footer)
       end
     end
@@ -58,15 +58,15 @@ module IndexHtml
     #
     # @return [Array<String>] the list of valid <li> tags
     def make_links(file_list, args)
-      prefix = args.fetch(:prefix, '.')
+      prefix = args.fetch(:prefix, ".")
       result = []
 
       file_list.each do |i|
-        path = File.absolute_path(i).gsub(Dir.pwd, '')
+        path = File.absolute_path(i).gsub(Dir.pwd, "")
         if prefix
           link =  %Q(<li><a href="#{prefix}#{path}" target='_blank'>#{prefix}#{path}</li>)
         else
-          link =  %Q(<li><a href=".#{path}" target='_blank'>#{path.gsub(/^\//, '')}</li>)
+          link =  %Q(<li><a href=".#{path}" target='_blank'>#{path.gsub(/^\//, "")}</li>)
         end
         result << link
       end

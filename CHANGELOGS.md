@@ -1,5 +1,11 @@
 ### Changelogs
 
+#### 0.1.3
+
+- Simplify the CLI usage
+- Cleanup style with rubocop
+- Add `coveralls` badges
+
 #### 0.1.2
 
 - First release based on the [Semantic Versioning][] convention.

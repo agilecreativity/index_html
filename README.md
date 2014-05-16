@@ -3,10 +3,14 @@
 [![Gem Version](https://badge.fury.io/rb/index_html.svg)][gem]
 [![Dependency Status](https://gemnasium.com/agilecreativity/index_html.png)][gemnasium]
 [![Code Climate](https://codeclimate.com/github/agilecreativity/index_html.png)][codeclimate]
+[![Build Status](https://secure.travis-ci.org/agilecreativity/index_html.png)][travis-ci]
+[![Coverage Status](https://coveralls.io/repos/agilecreativity/index_html/badge.png)][coveralls]
 
 [gem]: http://badge.fury.io/rb/index_html
 [gemnasium]: https://gemnasium.com/agilecreativity/index_html
 [codeclimate]: https://codeclimate.com/github/agilecreativity/index_html
+[travis-ci]: http://travis-ci.org/agilecreativity/index_html
+[coveralls]: https://coveralls.io/r/agilecreativity/index_html
 
 Quickly generate the index.html files based on your simple criteria.
 
@@ -37,10 +41,10 @@ that have the specific word 'Android' in the title you could perhap try somethin
 ```sh
 gem install index_html
 cd ~/Dropbox/ebooks/
-index_html generate --base-dir . \
-                    --exts epub pdf mobi  \
-                    --inc-words android \
-                    --recursive
+index_html --base-dir . \
+           --exts epub pdf mobi  \
+           --inc-words android \
+           --recursive
 ```
 
 ### Help/Usage:
@@ -80,7 +84,7 @@ This will generate the file `index.html` that you can open from your favourite b
 - Sample list of files from a given directory
 
 ```shell
-$index_html generate --base-dir=spec/fixtures --exts=rb java --recursive
+$index_html --base-dir=spec/fixtures --exts=rb java --recursive
 ```
 The output file `index.html` should be generated with something like
 
@@ -105,7 +109,7 @@ The output file `index.html` should be generated with something like
 - Run with simple prefix option
 
 ```shell
-index_html generate --base-dir spec/fixtures --exts rb java --recursive --prefix http://localhost
+index_html --base-dir spec/fixtures --exts rb java --recursive --prefix http://localhost
 ```
 
 The output file `index.html` should be something like

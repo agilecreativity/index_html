@@ -1,5 +1,9 @@
 #!/usr/bin/env ruby
-require 'code_lister'
-require_relative '../lib/index_html'
+require "code_lister"
+require_relative "../lib/index_html"
 include IndexHtml
-IndexHtml::CLI.start(ARGV)
+if ARGV.empty?
+  IndexHtml::CLI.start(%w[usage])
+else
+  IndexHtml::CLI.start(%w[generate].concat(ARGV))
+end

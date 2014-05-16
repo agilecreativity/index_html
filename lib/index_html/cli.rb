@@ -1,10 +1,10 @@
-require 'thor'
-require 'agile_utils'
-require_relative '../index_html'
-
+require "thor"
+require "agile_utils"
+require_relative "../index_html"
 module IndexHtml
   class CLI < Thor
-    desc 'generate', 'Generate the index.html base on simple criteria'
+    # rubocop:disable AmbiguousOperator, LineLength
+    desc "generate", "Generate the index.html base on simple criteria"
     # Common shared options
     method_option *AgileUtils::Options::BASE_DIR
     method_option *AgileUtils::Options::EXTS
@@ -17,19 +17,19 @@ module IndexHtml
 
     # specific to this action only
     method_option :prefix,
-                  aliases: '-p',
-                  desc: 'Prefix string to the URL',
-                  default: '.'
+                  aliases: "-p",
+                  desc: "Prefix string to the URL",
+                  default: "."
     method_option :indent,
-                  aliases: '-d',
-                  desc: 'Indentation to each list item in the output',
+                  aliases: "-d",
+                  desc: "Indentation to each list item in the output",
                   type: :numeric,
                   default: 6
     method_option :output,
-                  aliases: '-o',
-                  desc: 'Output file name',
+                  aliases: "-o",
+                  desc: "Output file name",
                   type: :string,
-                  default: 'index.html'
+                  default: "index.html"
     def generate
       opts = options.symbolize_keys
       if opts[:version]
@@ -39,11 +39,11 @@ module IndexHtml
       run(opts)
     end
 
-    desc 'usage', 'Display help screen'
+    desc "usage", "Display help screen"
     def usage
       puts <<-EOS
 Usage:
-  index_html generate
+  index_html
 
 Options:
   -b, [--base-dir=BASE_DIR]                # Base directory
@@ -67,10 +67,11 @@ Options:
 Generate the index.html base on simple criteria
       EOS
     end
+    # rubocop:enable AmbiguousOperator, LineLength
 
     default_task :usage
 
-    private
+  private
 
     def run(options = {})
       files = CodeLister.files options || []
