@@ -53,7 +53,7 @@ Just type `index_html` without any options to see the list of help
 
 ```
 Usage:
-  index_html generate
+  index_html
 
 Options:
   -b, [--base-dir=BASE_DIR]                # Base directory
