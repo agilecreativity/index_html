@@ -9,14 +9,14 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Burin Choomnuan"]
   spec.email         = ["agilecreativity@gmail.com"]
   spec.description   = %q(Generate the index.html from list of files)
-  spec.summary       = %q(Generate simple index.html from list of files based on simple criteria)
+  spec.summary       = %q(Generate simple index.html from list of files based on your simple selection criteria)
   spec.homepage      = "https://github.com/agilecreativity/index_html"
   spec.license       = "MIT"
   spec.files         = Dir.glob("{bin,lib}/**/*") + %w[Gemfile
                                                        Rakefile
                                                        index_html.gemspec
                                                        README.md
-                                                       CHANGELOGS.md
+                                                       CHANGELOG.md
                                                        LICENSE
                                                        .rubocop.yml
                                                        .gitignore]
@@ -33,6 +33,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry", "~> 0.9"
   spec.add_development_dependency "rake", "~> 10.3"
   spec.add_development_dependency "rspec", "~> 2.14"
-  spec.add_development_dependency "rubocop", "~> 0.20"
+  spec.add_development_dependency "rubocop", "~> 0.23"
   spec.add_development_dependency "coveralls", "~> 0.7"
 end

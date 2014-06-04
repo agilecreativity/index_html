@@ -1,5 +1,10 @@
 ### Changelogs
 
+#### 0.1.4
+
+- Update the 'rubocop' to 0.23.x
+- Minor code cleanup
+
 #### 0.1.3
 
 - Simplify the CLI usage

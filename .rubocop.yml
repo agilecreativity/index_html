@@ -49,9 +49,9 @@ Documentation:
 HashSyntax:
   Enabled: true
 
-# No spaces inside hash literals
+# Spaces inside hash literals
 SpaceInsideHashLiteralBraces:
-  EnforcedStyle: no_space
+  EnforcedStyle: space
 
 # Allow dots at the end of lines
 DotPosition:
@@ -61,9 +61,9 @@ DotPosition:
 Encoding:
   Enabled: false
 
-# Enforce outdenting of access modifiers (i.e. public, private, protected)
-AccessModifierIndentation:
-  EnforcedStyle: outdent
+# #Enforce outdenting of access modifiers (i.e. public, private, protected)
+# AccessModifierIndentation:
+#   EnforcedStyle: outdent
 
 EmptyLinesAroundAccessModifier:
   Enabled: true
