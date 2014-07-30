@@ -41,7 +41,8 @@ describe IndexHtml do
                         indent: 6,
                         output: "index.html",
                         base_dir: "spec/fixtures"
-      expect(capture(:stdout) { system("cat index.html") }).to eq \
+
+      expect(File.read("index.html")).to eq \
         <<-EOT
 <html>
 <title>File Listing</title>
@@ -69,7 +70,7 @@ describe IndexHtml do
                         output: "index.html",
                         prefix: "http://agilecreativity.com/public",
                         base_dir: "spec/fixtures" # Note: must not puts the '/' at the end!
-      expect(capture(:stdout) { system("cat index.html") }).to eq \
+      expect(File.read("index.html")).to eq \
         <<-EOT
 <html>
 <title>File Listing</title>
@@ -93,43 +94,43 @@ describe IndexHtml do
 
   context "#make_links" do
     it "works with prefix" do
-      result = IndexHtml.make_links files, base_dir: "spec/fixtures", prefix: "public"
-      expect(capture(:stdout) { puts result }).to eq \
-        <<-EOT
+      actual = IndexHtml.make_links(files, base_dir: "spec/fixtures", prefix: "public")
+      expected = <<-EOT
 <li><a href="public/demo1.xxx.rb" target='_blank'>public/demo1.xxx.rb</li>
 <li><a href="public/demo2.xxx.rb" target='_blank'>public/demo2.xxx.rb</li>
       EOT
+      expect(actual).to eq(expected.split("\n"))
     end
 
     it "works without prefix" do
-      result = IndexHtml.make_links(files, base_dir: "spec/fixtures")
-      expect(capture(:stdout) { puts result }).to eq \
-        <<-EOT
+      actual = IndexHtml.make_links(files, base_dir: "spec/fixtures")
+      expected = <<-EOT
 <li><a href="./demo1.xxx.rb" target='_blank'>./demo1.xxx.rb</li>
 <li><a href="./demo2.xxx.rb" target='_blank'>./demo2.xxx.rb</li>
       EOT
+      expect(actual).to eq(expected.split("\n"))
     end
 
     it "works with base_dir starting with dot" do
       files = CodeLister.files base_dir: "./spec/fixtures",
                                exts: %w[xxx.rb], recursive: true
-      result = IndexHtml.make_links(files, base_dir: "./spec/fixtures/")
-      expect(capture(:stdout) { puts result }).to eq \
-        <<-EOT
+      actual = IndexHtml.make_links(files, base_dir: "./spec/fixtures/")
+      expected = <<-EOT
 <li><a href="./demo1.xxx.rb" target='_blank'>./demo1.xxx.rb</li>
 <li><a href="./demo2.xxx.rb" target='_blank'>./demo2.xxx.rb</li>
       EOT
+      expect(actual).to eq(expected.split("\n"))
     end
 
     it "works with base_dir not starting with dot" do
       files = CodeLister.files base_dir: "spec/fixtures",
                                exts: %w[xxx.rb], recursive: true
-      result = IndexHtml.make_links(files, base_dir: "spec/fixtures/")
-      expect(capture(:stdout) { puts result }).to eq \
-        <<-EOT
+      actual = IndexHtml.make_links(files, base_dir: "spec/fixtures/")
+      expected = <<-EOT
 <li><a href="./demo1.xxx.rb" target='_blank'>./demo1.xxx.rb</li>
 <li><a href="./demo2.xxx.rb" target='_blank'>./demo2.xxx.rb</li>
       EOT
+      expect(actual).to eq(expected.split("\n"))
     end
   end
 end

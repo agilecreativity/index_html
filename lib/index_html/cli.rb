@@ -3,6 +3,8 @@ require "agile_utils"
 require_relative "../index_html"
 module IndexHtml
   class CLI < Thor
+    using AgileUtils::HashExt
+
     # rubocop:disable AmbiguousOperator, LineLength
     desc "generate", "Generate the index.html base on simple criteria"
     # Common shared options
