@@ -1,10 +1,14 @@
 ### Changelogs
 
+#### 0.2.1
+
+- Require version 2.1.0+ of ruby
+
 #### 0.2.0
 
 - Use latest version of 'agile_utils' (no monkeypatching)
 - Use latest version of 'code_lister'
-- Support only ruby 2.0.x+
+- Support only ruby 2.1.x+
 - Cleanup the tests
 - Fix the rubocop style
 - Update the gemspec
