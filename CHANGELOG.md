@@ -1,5 +1,9 @@
 ### Changelogs
 
+#### 0.2.2
+
+- Lower required ruby version to 1.9.3+
+
 #### 0.2.1
 
 - Require version 2.1.0+ of ruby
