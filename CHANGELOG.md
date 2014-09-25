@@ -1,5 +1,10 @@
 ### Changelogs
 
+#### 0.2.3
+
+- Make it possible to remove the last extension from the link for `vim_printer`
+- Update some gem dependency to the most recent version
+
 #### 0.2.2
 
 - Lower required ruby version to 1.9.3+

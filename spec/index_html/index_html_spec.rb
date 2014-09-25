@@ -133,4 +133,17 @@ describe IndexHtml do
       expect(actual).to eq(expected.split("\n"))
     end
   end
+
+  context "#drop_extension" do
+    it 'returns original input for file with no extension' do
+      expect(IndexHtml.drop_extension("/path/to/file")).to eq              "/path/to/file"
+      expect(IndexHtml.drop_extension("some_file")).to eq                  "some_file"
+      expect(IndexHtml.drop_extension("/path/to/some_file")).to eq         "/path/to/some_file"
+    end
+    it 'returns new string with last extension dropped ' do
+      expect(IndexHtml.drop_extension("some_file.txt")).to eq              "some_file"
+      expect(IndexHtml.drop_extension("/path/to/some_file.txt")).to eq     "/path/to/some_file"
+      expect(IndexHtml.drop_extension("/path/to/some_file.txt.pdf")).to eq "/path/to/some_file.txt"
+    end
+  end
 end
