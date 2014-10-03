@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-require "code_lister"
 require_relative "../lib/index_html"
 include IndexHtml
 if ARGV.empty?

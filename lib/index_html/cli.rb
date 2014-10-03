@@ -1,6 +1,3 @@
-require "thor"
-require "agile_utils"
-require_relative "../index_html"
 module IndexHtml
   class CLI < Thor
     # rubocop:disable AmbiguousOperator, LineLength

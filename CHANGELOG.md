@@ -1,5 +1,10 @@
 ### Changelogs
 
+#### 0.2.4
+
+- Use require instead of require_relative
+- Misc code cleanup
+
 #### 0.2.3
 
 - Make it possible to remove the last extension from the link for `vim_printer`

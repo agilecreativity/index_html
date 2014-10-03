@@ -1,6 +1,4 @@
-require "fileutils"
 require_relative "../spec_helper"
-
 describe IndexHtml do
   let(:files) do
     CodeLister.files base_dir: "spec/fixtures",
