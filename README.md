@@ -5,6 +5,7 @@
 [![Code Climate](https://codeclimate.com/github/agilecreativity/index_html.png)][codeclimate]
 [![Build Status](https://secure.travis-ci.org/agilecreativity/index_html.png)][travis-ci]
 [![Coverage Status](https://coveralls.io/repos/agilecreativity/index_html/badge.png)][coveralls]
+[![Codeship Status for agilecreativity/index_html](https://codeship.com/projects/baebac20-519d-0132-8657-6a8e4349286c/status)](https://codeship.com/projects/48400)
 
 [gem]: http://badge.fury.io/rb/index_html
 [gemnasium]: https://gemnasium.com/agilecreativity/index_html
