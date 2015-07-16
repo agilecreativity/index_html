@@ -28,7 +28,7 @@ module IndexHtml
                   type: :string,
                   default: "index.html"
     def generate
-      opts = options.symbolize_keys
+      opts = options.deep_symbolize_keys
       if opts[:version]
         puts "You are using IndexHtml Version #{IndexHtml::VERSION}"
         exit

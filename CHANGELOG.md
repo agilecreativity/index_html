@@ -1,5 +1,9 @@
 ### Changelogs
 
+#### 0.2.5
+
+- Update gem's dependencies
+
 #### 0.2.4
 
 - Use require instead of require_relative
